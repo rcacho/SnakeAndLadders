@@ -24,4 +24,7 @@
 
 -(GameSquare*)generateRandomGameSquare;
 
+-(void)initializeSquares:(Board *)board;
+
+
 @end

@@ -20,5 +20,12 @@
     printf("\n");
 }
 
+-(GameSquare *)getSquare:(BoardPosition *)position {
+    NSArray *squares = self.gameSquares;
+    
+    GameSquare *square = [squares objectAtIndex:position->xPosition - 1];
+    
+    return square;
+}
 
 @end

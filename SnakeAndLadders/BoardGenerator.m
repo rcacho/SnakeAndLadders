@@ -7,6 +7,9 @@
 //
 
 #import "BoardGenerator.h"
+#import "Snake.h"
+#import "Ladder.h"
+
 
 @implementation BoardGenerator
 
@@ -26,7 +29,7 @@
     
     NSArray *boardArray = [[NSArray alloc] initWithArray:tempBoard];
     [board setGameRows:boardArray];
-    
+
     return board;
 }
 
@@ -65,6 +68,20 @@
     
 }
 
-
+-(void) initializeSquares:(Board *)board {
+    NSArray *rows = board.gameRows;
+    for (GameRow *row in rows) {
+        
+        NSArray *squares = row.gameSquares;
+        
+        for (GameSquare *square in squares) {
+            if ([square isMemberOfClass:[Snake class]]) {
+                [self designateSnakeRisePoint:square withBoard:board];
+            } else if ([square isMemberOfClass:[Ladder class]]) {
+                [self designateLadderFallPoint:square withBoard:board];
+            }
+        }
+    }
+}
 
 @end

@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Player.h"
 
 @interface GameRow : NSObject
 
 @property NSArray *gameSquares;
 
 -(void)printRow;
+
+-(GameSquare *)getSquare:(BoardPosition *)position;
 
 @end

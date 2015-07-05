@@ -20,5 +20,14 @@
     }
 }
 
+-(GameSquare *)getSquare:(BoardPosition *)position {
+    NSArray *rows = self.gameRows;
+    
+    GameRow *row = [rows objectAtIndex:position->yPosition - 1];
+    
+    GameSquare *square = [row getSquare:position];
+    
+    return square;
+}
 
 @end

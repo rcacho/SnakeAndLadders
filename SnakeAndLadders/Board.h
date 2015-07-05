@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GameSquare.h"
+#import "Player.h"
 
 
 // A Board is made of n GameRows where n is a player input
@@ -19,7 +20,7 @@
 
 -(void)printBoard;
 
-
+-(GameSquare *)getSquare:(BoardPosition *)position;
 
 
 @end

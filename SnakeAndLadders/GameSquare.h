@@ -12,7 +12,6 @@
 
 @interface GameSquare : NSObject
 
-@property 
 
 -(void)printSquare;
 
