@@ -12,6 +12,10 @@
 // has a point to a row higher up than the one this square is in
 @interface Ladder : GameSquare
 
+@property NSInteger pointsToXPosition;
+
+@property NSInteger pointsToYPosition;
+
 -(void)printSquare;
 
 

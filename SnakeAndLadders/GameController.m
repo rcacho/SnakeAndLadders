@@ -91,6 +91,17 @@
 
     //check if square has method to get new square
     // if so the player gets moved to that new square
+    if ( [currentSquare isMemberOfClass:[Snake class]] || [currentSquare isMemberOfClass:[Ladder class]])
+    {
+        Snake *snake = currentSquare;
+        
+        BoardPosition *newPosition = malloc(sizeof(BoardPosition));
+        newPosition->xPosition = snake.pointsToXPosition;
+        newPosition->yPosition = snake.pointsToYPosition;
+        
+        player.position = newPosition;
+    }
+    
     
 }
 

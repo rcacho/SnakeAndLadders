@@ -12,6 +12,11 @@
 // has a pointer to a row lower than the one this one is in
 @interface Snake : GameSquare
 
+@property NSInteger pointsToXPosition;
+
+@property NSInteger pointsToYPosition;
+
+
 -(void)printSquare;
 
 @end

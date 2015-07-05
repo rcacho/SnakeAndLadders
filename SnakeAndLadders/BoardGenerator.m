@@ -70,18 +70,59 @@
 
 -(void) initializeSquares:(Board *)board {
     NSArray *rows = board.gameRows;
+    NSInteger x = 0;
+    NSInteger y = 0;
+    
     for (GameRow *row in rows) {
-        
+        x++;
         NSArray *squares = row.gameSquares;
         
         for (GameSquare *square in squares) {
+            y++;
             if ([square isMemberOfClass:[Snake class]]) {
-                [self designateSnakeRisePoint:square withBoard:board];
+                [self designateSnakeRisePoint:square withBoard:board andWithX:x andWithY:y];
             } else if ([square isMemberOfClass:[Ladder class]]) {
                 [self designateLadderFallPoint:square withBoard:board];
             }
         }
     }
+}
+
+-(void)designateSnakeRisePoint:(Snake *)square withBoard:(Board *)board andWithX:(NSInteger)x andWithY:(NSInteger)y {
+    NSInteger fromHomeToX = x - board.boardSize;
+    NSInteger fromHomeToY = y - board.boardSize;
+    
+    NSInteger pointsToXPosition = [self tossCoin:fromHomeToX soFar:0];
+    NSInteger pointsToYPosition = [self tossCoin:fromHomeToY soFar:0];
+    
+    square.pointsToXPosition = x - pointsToXPosition;
+    square.pointsToYPosition = y - pointsToYPosition;
+    
+
+}
+
+-(void)designateLadderFallPoint:(Ladder *)square withBoard:(Board *)board {
+    square.pointsToXPosition = [self tossCoin:board.boardSize - 1 soFar:0];
+    square.pointsToYPosition = [self tossCoin:board.boardSize - 1 soFar:0];
+    
+}
+
+
+-(NSInteger)tossCoin:(NSInteger)size soFar:(NSInteger)position {
+    int diceRoll = arc4random_uniform(99);
+    
+    if (size >= 0) {
+        if (diceRoll > 50) {
+            return [self tossCoin:size - 1 soFar: position + 1];
+        } else {
+            return position;
+        }
+    } else {
+        return position;
+    }
+    
+
+
 }
 
 @end

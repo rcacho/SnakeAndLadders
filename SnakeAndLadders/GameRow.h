@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
+#import "GameSquare.h"
 
 @interface GameRow : NSObject
 

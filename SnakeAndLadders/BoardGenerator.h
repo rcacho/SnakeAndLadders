@@ -26,5 +26,10 @@
 
 -(void)initializeSquares:(Board *)board;
 
+-(void)designateSnakeRisePoint:(GameSquare *)square withBoard:(Board *)board andWithX:(NSInteger)x andWithY:(NSInteger)y;
+
+-(void)designateLadderFallPoint:(GameSquare *)square withBoard:(Board *)board;
+
+-(NSInteger)tossCoin:(NSInteger)size soFar:(NSInteger)position;
 
 @end
